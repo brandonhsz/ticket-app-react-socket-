@@ -1,4 +1,5 @@
 import React from 'react'
+import Td from './Table/Td'
 import Th from './Table/Th'
 
 const Tickets = ({ tickets }: any) => {
@@ -19,10 +20,7 @@ const Tickets = ({ tickets }: any) => {
             {
               tickets.map((ticket: any) => (
                 <tr>
-                  <td className='border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400'>{ticket.title}</td>
-                  <td className='border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400'>{ticket.description}</td>
-                  <td className='border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400'>{ticket.status}</td>
-                  <td className='border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400'>{ticket.priority}</td>
+                  <Td ticket={ticket} />
                 </tr>
               ))
             }
