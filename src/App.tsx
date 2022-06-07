@@ -1,15 +1,33 @@
 import { useState } from 'react'
+import Formulario from './components/Formulario'
 import Tickets from './components/Tickets'
 import socket from './sockets/index'
 const App = () => {
 
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState({
+    title: '',
+    description: '',
+    status: '',
+    priority: ''
+  })
   const [data, setData] = useState([])
 
   const handleSubmit = (e: any) => {
     e.preventDefault()
-    socket.sendMessage('findAllTickets', {})
-    setMessage('')
+    socket.sendMessage('createTicket', message)
+    setMessage({
+      title: '',
+      description: '',
+      status: '',
+      priority: ''
+    })
+  }
+
+  const handleChange = (e: any) => {
+    setMessage({
+      ...message,
+      [e.target.name]: e.target.value
+    })
   }
 
   socket.socket.on('ticket', (message: any) => {
@@ -19,17 +37,12 @@ const App = () => {
 
   return (
     <div>
-      <form>
-        <input
-          type="text"
-          placeholder='message'
-          onChange={(e) => setMessage(e.target.value)}
-          value={message}
-        />
-        <button type='submit' onClick={handleSubmit}>Send</button>
 
-      </form>
-
+      <Formulario
+        handleSubmit={handleSubmit}
+        handleChange={handleChange}
+        message={message}
+      />
       <Tickets tickets={data} />
 
     </div>

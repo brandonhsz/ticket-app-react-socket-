@@ -15,7 +15,7 @@ export class Socket {
     });
   }
 
-  public sendMessage = (event: string, message: object) => {
+  public sendMessage = (event: string, message: any) => {
 
     this.socket.emit(event, message);
   }
