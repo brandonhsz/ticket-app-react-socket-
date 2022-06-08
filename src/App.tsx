@@ -1,34 +1,19 @@
-import { useState } from 'react'
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from 'react-router-dom'
+
 import Formulario from './components/Formulario'
+import Spin from './components/Spin/Spin'
 import Tickets from './components/Tickets'
 import socket from './sockets/index'
+
+import { useSocket } from './hooks/useSocket'
+
 const App = () => {
 
-  const [message, setMessage] = useState({
-    title: '',
-    description: '',
-    status: '',
-    priority: ''
-  })
-  const [data, setData] = useState([])
-
-  const handleSubmit = (e: any) => {
-    e.preventDefault()
-    socket.sendMessage('createTicket', message)
-    setMessage({
-      title: '',
-      description: '',
-      status: '',
-      priority: ''
-    })
-  }
-
-  const handleChange = (e: any) => {
-    setMessage({
-      ...message,
-      [e.target.name]: e.target.value
-    })
-  }
+  const { data, setData, message, handleChange, handleSubmit } = useSocket()
 
   socket.socket.on('ticket', (message: any) => {
     console.log('ticket');
@@ -36,16 +21,21 @@ const App = () => {
   })
 
   return (
-    <div>
+    <BrowserRouter>
 
-      <Formulario
-        handleSubmit={handleSubmit}
-        handleChange={handleChange}
-        message={message}
-      />
-      <Tickets tickets={data} />
+      <Routes>
 
-    </div>
+        <Route path="/" element={<Formulario />}
+        />
+
+        <Route path="tickets" element={
+          data.length > 0 ? <Tickets tickets={data} /> : <Spin />
+        } />
+
+      </Routes>
+
+
+    </BrowserRouter>
   )
 }
 

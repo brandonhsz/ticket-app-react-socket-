@@ -5,7 +5,7 @@ import Th from './Table/Th'
 const Tickets = ({ tickets }: any) => {
   return (
     <div className='relative rounded-xl overflow-auto'>
-      <div className='shadow-sm overflow-hidden my-8'>
+      <div className='shadow-sm overflow-hidden my-8 border-2'>
         <table className='border-collapse table-auto w-full text-sm'>
           <thead className='dark:bg-slate-800'>
             <tr>
