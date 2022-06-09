@@ -28,6 +28,7 @@ const App = () => {
         <Route path="/" element={<Formulario />}
         />
 
+
         <Route path="tickets" element={
           data.length > 0 ? <Tickets tickets={data} /> : <Spin />
         } />
