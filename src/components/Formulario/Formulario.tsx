@@ -1,4 +1,6 @@
-import { useSocket } from "../hooks/useSocket"
+import { useSocket } from "../../hooks/useSocket"
+import Button from "./Button"
+import Input from "./Input"
 
 const Formulario = () => {
 
@@ -17,7 +19,9 @@ const Formulario = () => {
       <div className="container mx-auto w-2/4">
         <form className="flex flex-col ">
 
-          <input
+
+
+          <Input
             type="text"
             placeholder='title'
             name='title'
@@ -25,7 +29,7 @@ const Formulario = () => {
             value={message.title}
           />
 
-          <input
+          <Input
             type="text"
             placeholder='description'
             name='description'
@@ -33,7 +37,7 @@ const Formulario = () => {
             value={message.description}
           />
 
-          <input
+          <Input
             type="text"
             placeholder='status'
             name='status'
@@ -41,7 +45,7 @@ const Formulario = () => {
             value={message.status}
           />
 
-          <input
+          <Input
             type="text"
             placeholder='priority'
             name='priority'
@@ -49,10 +53,7 @@ const Formulario = () => {
             value={message.priority}
           />
 
-          <div className="text-center lg:text-left flex justify-center">
-            <button type='submit' onClick={handleSubmit}>Send</button>
-
-          </div>
+          <Button />
 
         </form>
       </div>

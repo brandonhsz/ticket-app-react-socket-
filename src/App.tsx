@@ -4,12 +4,14 @@ import {
   Route,
 } from 'react-router-dom'
 
-import Formulario from './components/Formulario'
+import Formulario from './components/Formulario/Formulario'
 import Spin from './components/Spin/Spin'
-import Tickets from './components/Tickets'
+import Tickets from './components/Tickets/Tickets'
 import socket from './sockets/index'
 
 import { useSocket } from './hooks/useSocket'
+import Header from './components/Header/Header'
+import Footer from './components/Footer/Footer'
 
 const App = () => {
 
@@ -22,6 +24,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
+      <Header />
 
       <Routes>
 
@@ -35,7 +38,7 @@ const App = () => {
 
       </Routes>
 
-
+      <Footer />
     </BrowserRouter>
   )
 }

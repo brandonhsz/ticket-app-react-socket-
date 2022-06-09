@@ -1,6 +1,5 @@
-import React from 'react'
-import Td from './Table/Td'
-import Th from './Table/Th'
+import Td from './Td'
+import Th from './Th'
 
 const Tickets = ({ tickets }: any) => {
   return (
